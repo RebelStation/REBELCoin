@@ -1,0 +1,8 @@
+/usr/bin/rebelcoin-cli		--	gen_context(system_u:object_r:rebelcoin_exec_t,s0)
+/usr/sbin/rebelcoind		--	gen_context(system_u:object_r:rebelcoin_exec_t,s0)
+/usr/lib(64)?/rebelcoin/rebelcoind		--	gen_context(system_u:object_r:rebelcoin_exec_t,s0)
+
+/etc/rebelcoin(/.*)?		gen_context(system_u:object_r:rebelcoin_conf_t,s0)
+/var/lib/rebelcoin(/.*)?		gen_context(system_u:object_r:rebelcoin_var_lib_t,s0)
+
+(/var)?/run/rebelcoind(/.*)?   gen_context(system_u:object_r:rebelcoin_var_run_t,s0)

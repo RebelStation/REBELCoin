@@ -1,0 +1,15 @@
+# http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-1.0.html
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=REBEL Coin
+Comment=REBEL Coin QT test network
+GenericName=REBELCoin Digital Currency QT client testnet network
+Exec=rebelcoin-core.qt-testnet %u
+Terminal=false
+Type=Application
+Icon=${SNAP}/share/pixmaps/rebelcoin_testnet.png
+MimeType=x-scheme-handler/rbl;
+Categories=X-Office;X-Finance;
+Keywords=internet;rebelcoin;trbl;core;wallet;qt;testnet;snap;launchpad;crypto;digital;currency;coin;token;
+Version=1.0

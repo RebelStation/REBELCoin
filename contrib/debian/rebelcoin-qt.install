@@ -1,0 +1,6 @@
+usr/local/bin/rebelcoin-qt usr/bin
+share/pixmaps/rebelcoin32.xpm usr/share/pixmaps
+share/pixmaps/rebelcoin16.xpm usr/share/pixmaps
+share/pixmaps/rebelcoin128.png usr/share/pixmaps
+debian/rebelcoin-qt.desktop usr/share/applications
+debian/rebelcoin-qt.protocol usr/share/kde4/services/

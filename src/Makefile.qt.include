@@ -1,0 +1,756 @@
+# Copyright (c) 2013-2016 The Bitcoin Core developers
+# Distributed under the MIT software license, see the accompanying
+# file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
+bin_PROGRAMS += qt/rebelcoin-qt
+EXTRA_LIBRARIES += qt/libbitcoinqt.a
+
+# rebelcoin qt core #
+include Makefile.qt_locale.include
+
+QT_FORMS_UI = \
+  qt/forms/addressbookpage.ui \
+  qt/forms/askpassphrasedialog.ui \
+  qt/forms/coincontroldialog.ui \
+  qt/forms/editaddressdialog.ui \
+  qt/forms/helpmessagedialog.ui \
+  qt/forms/intro.ui \
+  qt/forms/openuridialog.ui \
+  qt/forms/optionsdialog.ui \
+  qt/forms/rpcconsole.ui \
+  qt/rebelcoin/forms/loadingdialog.ui \
+  qt/rebelcoin/forms/snackbar.ui \
+  qt/rebelcoin/forms/navmenuwidget.ui \
+  qt/rebelcoin/forms/lockunlock.ui \
+  qt/rebelcoin/forms/expandablebutton.ui \
+  qt/rebelcoin/forms/receivedialog.ui \
+  qt/rebelcoin/forms/balancebubble.ui \
+  qt/rebelcoin/forms/topbar.ui \
+  qt/rebelcoin/forms/txrow.ui \
+  qt/rebelcoin/forms/dashboardwidget.ui \
+  qt/rebelcoin/forms/addresslabelrow.ui \
+  qt/rebelcoin/forms/contactdropdownrow.ui \
+  qt/rebelcoin/forms/mninfodialog.ui \
+  qt/rebelcoin/forms/optionbutton.ui \
+  qt/rebelcoin/forms/masternodewizarddialog.ui \
+  qt/rebelcoin/forms/mnrow.ui \
+  qt/rebelcoin/forms/masternodeswidget.ui \
+  qt/rebelcoin/forms/myaddressrow.ui \
+  qt/rebelcoin/forms/csrow.ui \
+  qt/rebelcoin/forms/sendmemodialog.ui \
+  qt/rebelcoin/forms/sendchangeaddressdialog.ui \
+  qt/rebelcoin/forms/sendconfirmdialog.ui \
+  qt/rebelcoin/forms/sendcustomfeedialog.ui \
+  qt/rebelcoin/forms/sendmultirow.ui \
+  qt/rebelcoin/forms/send.ui \
+  qt/rebelcoin/forms/addnewaddressdialog.ui \
+  qt/rebelcoin/forms/addnewcontactdialog.ui \
+  qt/rebelcoin/forms/requestdialog.ui \
+  qt/rebelcoin/forms/receivewidget.ui \
+  qt/rebelcoin/forms/tooltipmenu.ui \
+  qt/rebelcoin/forms/addresseswidget.ui \
+  qt/rebelcoin/forms/defaultdialog.ui \
+  qt/rebelcoin/forms/coldstakingwidget.ui \
+  qt/rebelcoin/forms/proposalcard.ui \
+  qt/rebelcoin/forms/mnselectiondialog.ui \
+  qt/rebelcoin/forms/votedialog.ui \
+  qt/rebelcoin/forms/createproposaldialog.ui \
+  qt/rebelcoin/forms/governancewidget.ui \
+  qt/rebelcoin/settings/forms/settingsbackupwallet.ui \
+  qt/rebelcoin/settings/forms/settingsexportcsv.ui \
+  qt/rebelcoin/settings/forms/settingsbittoolwidget.ui \
+  qt/rebelcoin/settings/forms/settingsconsolewidget.ui \
+  qt/rebelcoin/settings/forms/settingsdisplayoptionswidget.ui \
+  qt/rebelcoin/settings/forms/settingsfaqwidget.ui \
+  qt/rebelcoin/settings/forms/settingsinformationwidget.ui \
+  qt/rebelcoin/settings/forms/settingsmainoptionswidget.ui \
+  qt/rebelcoin/settings/forms/settingsmultisenddialog.ui \
+  qt/rebelcoin/settings/forms/settingsmultisendwidget.ui \
+  qt/rebelcoin/settings/forms/settingssignmessagewidgets.ui \
+  qt/rebelcoin/settings/forms/settingswalletoptionswidget.ui \
+  qt/rebelcoin/settings/forms/settingswalletrepairwidget.ui \
+  qt/rebelcoin/settings/forms/settingswidget.ui \
+  qt/rebelcoin/forms/welcomecontentwidget.ui \
+  qt/rebelcoin/forms/splash.ui
+
+QT_MOC_CPP = \
+  qt/moc_addressbookpage.cpp \
+  qt/moc_addresstablemodel.cpp \
+  qt/moc_askpassphrasedialog.cpp \
+  qt/moc_bantablemodel.cpp \
+  qt/moc_bitcoinaddressvalidator.cpp \
+  qt/rebelcoin/moc_rebelcoingui.cpp \
+  qt/moc_bitcoinunits.cpp \
+  qt/moc_clientmodel.cpp \
+  qt/moc_coincontroldialog.cpp \
+  qt/moc_coincontroltreewidget.cpp \
+  qt/moc_csvmodelwriter.cpp \
+  qt/moc_editaddressdialog.cpp \
+  qt/moc_guiutil.cpp \
+  qt/moc_intro.cpp \
+  qt/moc_macdockiconhandler.cpp \
+  qt/moc_macnotificationhandler.cpp \
+  qt/moc_notificator.cpp \
+  qt/moc_openuridialog.cpp \
+  qt/moc_optionsdialog.cpp \
+  qt/moc_optionsmodel.cpp \
+  qt/moc_peertablemodel.cpp \
+  qt/moc_paymentserver.cpp \
+  qt/moc_qvalidatedlineedit.cpp \
+  qt/moc_qvaluecombobox.cpp \
+  qt/moc_recentrequeststablemodel.cpp \
+  qt/moc_rpcconsole.cpp \
+  qt/moc_trafficgraphwidget.cpp \
+  qt/moc_transactionfilterproxy.cpp \
+  qt/moc_transactiontablemodel.cpp \
+  qt/moc_utilitydialog.cpp \
+  qt/moc_walletmodel.cpp \
+  qt/rebelcoin/moc_loadingdialog.cpp \
+  qt/rebelcoin/moc_pwidget.cpp \
+  qt/rebelcoin/moc_focuseddialog.cpp \
+  qt/rebelcoin/moc_snackbar.cpp \
+  qt/rebelcoin/moc_navmenuwidget.cpp \
+  qt/rebelcoin/moc_lockunlock.cpp \
+  qt/rebelcoin/moc_expandablebutton.cpp \
+  qt/rebelcoin/moc_furabstractlistitemdelegate.cpp \
+  qt/rebelcoin/moc_receivedialog.cpp \
+  qt/rebelcoin/moc_pfborderimage.cpp \
+  qt/rebelcoin/moc_topbar.cpp \
+  qt/rebelcoin/moc_txrow.cpp \
+  qt/rebelcoin/moc_dashboardwidget.cpp \
+  qt/rebelcoin/moc_addresslabelrow.cpp \
+  qt/rebelcoin/moc_contactdropdownrow.cpp \
+  qt/rebelcoin/moc_mninfodialog.cpp \
+  qt/rebelcoin/moc_optionbutton.cpp \
+  qt/rebelcoin/moc_coldstakingmodel.cpp \
+  qt/rebelcoin/moc_mnmodel.cpp \
+  qt/rebelcoin/moc_masternodewizarddialog.cpp \
+  qt/rebelcoin/moc_mnrow.cpp \
+  qt/rebelcoin/moc_masternodeswidget.cpp \
+  qt/rebelcoin/moc_myaddressrow.cpp \
+  qt/rebelcoin/moc_csrow.cpp \
+  qt/rebelcoin/moc_contactsdropdown.cpp \
+  qt/rebelcoin/moc_sendchangeaddressdialog.cpp \
+  qt/rebelcoin/moc_sendconfirmdialog.cpp \
+  qt/rebelcoin/moc_sendcustomfeedialog.cpp \
+  qt/rebelcoin/moc_sendmemodialog.cpp \
+  qt/rebelcoin/moc_sendmultirow.cpp \
+  qt/rebelcoin/moc_send.cpp \
+  qt/rebelcoin/moc_addnewaddressdialog.cpp \
+  qt/rebelcoin/moc_addnewcontactdialog.cpp \
+  qt/rebelcoin/moc_requestdialog.cpp \
+  qt/rebelcoin/moc_receivewidget.cpp \
+  qt/rebelcoin/moc_tooltipmenu.cpp \
+  qt/rebelcoin/moc_addresseswidget.cpp \
+  qt/rebelcoin/moc_defaultdialog.cpp \
+  qt/rebelcoin/moc_coldstakingwidget.cpp \
+  qt/rebelcoin/moc_proposalcard.cpp \
+  qt/rebelcoin/moc_mnselectiondialog.cpp \
+  qt/rebelcoin/moc_votedialog.cpp \
+  qt/rebelcoin/moc_createproposaldialog.cpp \
+  qt/rebelcoin/moc_governancewidget.cpp \
+  qt/rebelcoin/settings/moc_settingsbackupwallet.cpp \
+  qt/rebelcoin/settings/moc_settingsexportcsv.cpp \
+  qt/rebelcoin/settings/moc_settingsbittoolwidget.cpp \
+  qt/rebelcoin/settings/moc_settingsconsolewidget.cpp \
+  qt/rebelcoin/settings/moc_settingsdisplayoptionswidget.cpp \
+  qt/rebelcoin/settings/moc_settingsfaqwidget.cpp \
+  qt/rebelcoin/settings/moc_settingsinformationwidget.cpp \
+  qt/rebelcoin/settings/moc_settingsmainoptionswidget.cpp \
+  qt/rebelcoin/settings/moc_settingsmultisenddialog.cpp \
+  qt/rebelcoin/settings/moc_settingsmultisendwidget.cpp \
+  qt/rebelcoin/settings/moc_settingssignmessagewidgets.cpp \
+  qt/rebelcoin/settings/moc_settingswalletoptionswidget.cpp \
+  qt/rebelcoin/settings/moc_settingswalletrepairwidget.cpp \
+  qt/rebelcoin/settings/moc_settingswidget.cpp \
+  qt/rebelcoin/moc_welcomecontentwidget.cpp \
+  qt/rebelcoin/moc_splash.cpp
+
+BITCOIN_MM = \
+  qt/macdockiconhandler.mm \
+  qt/macnotificationhandler.mm
+
+QT_MOC = \
+  qt/rebelcoin.moc \
+  qt/intro.moc \
+  qt/rpcconsole.moc \
+  qt/rebelcoin/settings/moc_settingsconsolewidget.cpp
+
+QT_QRC_CPP = qt/qrc_rebelcoin.cpp
+QT_QRC = qt/rebelcoin.qrc
+QT_QRC_LOCALE_CPP = qt/qrc_rebelcoin_locale.cpp
+QT_QRC_LOCALE = qt/rebelcoin_locale.qrc
+
+PROTOBUF_CC = qt/paymentrequest.pb.cc
+PROTOBUF_H = qt/paymentrequest.pb.h
+PROTOBUF_PROTO = qt/paymentrequest.proto
+
+BITCOIN_QT_H = \
+  qt/addressbookpage.h \
+  qt/addresstablemodel.h \
+  qt/askpassphrasedialog.h \
+  qt/bantablemodel.h \
+  qt/bitcoinaddressvalidator.h \
+  qt/rebelcoin/rebelcoingui.h \
+  qt/bitcoinunits.h \
+  qt/clientmodel.h \
+  qt/coincontroldialog.h \
+  qt/coincontroltreewidget.h \
+  qt/csvmodelwriter.h \
+  qt/editaddressdialog.h \
+  qt/guiconstants.h \
+  qt/guiutil.h \
+  qt/intro.h \
+  qt/macdockiconhandler.h \
+  qt/macnotificationhandler.h \
+  qt/networkstyle.h \
+  qt/notificator.h \
+  qt/openuridialog.h \
+  qt/optionsdialog.h \
+  qt/optionsmodel.h \
+  qt/paymentrequestplus.h \
+  qt/paymentserver.h \
+  qt/peertablemodel.h \
+  qt/platformstyle.h \
+  qt/qvalidatedlineedit.h \
+  qt/qvaluecombobox.h \
+  qt/recentrequeststablemodel.h \
+  qt/rpcconsole.h \
+  qt/trafficgraphwidget.h \
+  qt/transactionfilterproxy.h \
+  qt/transactionrecord.h \
+  qt/transactiontablemodel.h \
+  qt/utilitydialog.h \
+  qt/walletmodel.h \
+  qt/walletmodeltransaction.h \
+  qt/rebelcoin/prunnable.h \
+  qt/rebelcoin/pfborderimage.h \
+  qt/rebelcoin/loadingdialog.h \
+  qt/winshutdownmonitor.h \
+  qt/rebelcoin/pwidget.h \
+  qt/rebelcoin/focuseddialog.h \
+  qt/rebelcoin/guitransactionsutils.h \
+  qt/rebelcoin/snackbar.h \
+  qt/rebelcoin/navmenuwidget.h \
+  qt/rebelcoin/lockunlock.h \
+  qt/rebelcoin/receivedialog.h \
+  qt/rebelcoin/furlistrow.h \
+  qt/rebelcoin/furabstractlistitemdelegate.h \
+  qt/rebelcoin/txviewholder.h \
+  qt/rebelcoin/qtutils.h \
+  qt/rebelcoin/expandablebutton.h \
+  qt/rebelcoin/balancebubble.h \
+  qt/rebelcoin/topbar.h \
+  qt/rebelcoin/txrow.h \
+  qt/rebelcoin/addressholder.h \
+  qt/rebelcoin/addressfilterproxymodel.h \
+  qt/rebelcoin/dashboardwidget.h \
+  qt/rebelcoin/addresslabelrow.h \
+  qt/rebelcoin/contactdropdownrow.h \
+  qt/rebelcoin/mninfodialog.h \
+  qt/rebelcoin/optionbutton.h \
+  qt/rebelcoin/coldstakingmodel.h \
+  qt/rebelcoin/mnmodel.h \
+  qt/rebelcoin/masternodewizarddialog.h \
+  qt/rebelcoin/mnrow.h \
+  qt/rebelcoin/masternodeswidget.h \
+  qt/rebelcoin/myaddressrow.h \
+  qt/rebelcoin/csrow.h \
+  qt/rebelcoin/contactsdropdown.h \
+  qt/rebelcoin/sendchangeaddressdialog.h \
+  qt/rebelcoin/sendconfirmdialog.h \
+  qt/rebelcoin/sendcustomfeedialog.h \
+  qt/rebelcoin/sendmemodialog.h \
+  qt/rebelcoin/sendmultirow.h \
+  qt/rebelcoin/send.h \
+  qt/rebelcoin/addnewaddressdialog.h \
+  qt/rebelcoin/addnewcontactdialog.h \
+  qt/rebelcoin/requestdialog.h \
+  qt/rebelcoin/receivewidget.h \
+  qt/rebelcoin/tooltipmenu.h \
+  qt/rebelcoin/addresseswidget.h \
+  qt/rebelcoin/defaultdialog.h \
+  qt/rebelcoin/coldstakingwidget.h \
+  qt/rebelcoin/governancemodel.h \
+  qt/rebelcoin/proposalcard.h \
+  qt/rebelcoin/mnselectiondialog.h \
+  qt/rebelcoin/votedialog.h \
+  qt/rebelcoin/createproposaldialog.h \
+  qt/rebelcoin/governancewidget.h \
+  qt/rebelcoin/settings/settingsbackupwallet.h \
+  qt/rebelcoin/settings/settingsexportcsv.h \
+  qt/rebelcoin/settings/settingsbittoolwidget.h \
+  qt/rebelcoin/settings/settingsconsolewidget.h \
+  qt/rebelcoin/settings/settingsdisplayoptionswidget.h \
+  qt/rebelcoin/settings/settingsfaqwidget.h \
+  qt/rebelcoin/settings/settingsinformationwidget.h \
+  qt/rebelcoin/settings/settingsmainoptionswidget.h \
+  qt/rebelcoin/settings/settingsmultisenddialog.h \
+  qt/rebelcoin/settings/settingsmultisendwidget.h \
+  qt/rebelcoin/settings/settingssignmessagewidgets.h \
+  qt/rebelcoin/settings/settingswalletoptionswidget.h \
+  qt/rebelcoin/settings/settingswalletrepairwidget.h \
+  qt/rebelcoin/settings/settingswidget.h \
+  qt/rebelcoin/welcomecontentwidget.h \
+  qt/rebelcoin/splash.h
+
+RES_ICONS = \
+  qt/res/icons/bitcoin.ico \
+  qt/res/icons/bitcoin.png \
+  qt/res/icons/bitcoin_testnet.ico \
+  qt/res/icons/bitcoin_testnet.png \
+  qt/res/icons/bitcoin_regtest.png \
+  qt/res/icons/lock_closed.png \
+  qt/res/icons/lock_open.png \
+  qt/res/icons/overview.png \
+  qt/res/icons/ic-transaction-received.png \
+  qt/res/icons/ic-transaction-mint.png \
+  qt/res/icons/ic-transaction-sent.png \
+  qt/res/icons/ic-transaction-staked.png \
+  qt/rebelcoin/res/img/bg-dashboard-banner.png \
+  qt/rebelcoin/res/img/bg-multi-number-dark.png \
+  qt/rebelcoin/res/img/ic-check-locked.png \
+  qt/rebelcoin/res/img/ic-nav-address.png \
+  qt/rebelcoin/res/img/ic-update.png \
+  qt/rebelcoin/res/img/bg-multi-number.png \
+  qt/rebelcoin/res/img/ic-check-mint-off.png \
+  qt/rebelcoin/res/img/ic-nav-cold-staking.png \
+  qt/rebelcoin/res/img/ic-nav-cold-staking-active.png \
+  qt/rebelcoin/res/img/ic-nav-dashboard-active.png \
+  qt/rebelcoin/res/img/ic-wallet-status-locked.png \
+  qt/rebelcoin/res/img/bg-splash.png \
+  qt/rebelcoin/res/img/ic-check-mint.png \
+  qt/rebelcoin/res/img/ic-nav-dashboard-hover.png \
+  qt/rebelcoin/res/img/ic-wallet-status-staking.png \
+  qt/rebelcoin/res/img/ic-check-peers-off.png \
+  qt/rebelcoin/res/img/ic-nav-dashboard.png \
+  qt/rebelcoin/res/img/ic-wallet-status-unlocked.png \
+  qt/rebelcoin/res/img/ic-check-peers.png \
+  qt/rebelcoin/res/img/ic-nav-master-active.png \
+  qt/rebelcoin/res/img/ic-watch-password-white.png \
+  qt/rebelcoin/res/img/bg-welcome-container.jpg \
+  qt/rebelcoin/res/img/bg-welcome-container.png \
+  qt/rebelcoin/res/img/bg-welcome-container@2x.png \
+  qt/rebelcoin/res/img/bg-welcome-container@3x.png \
+  qt/rebelcoin/res/img/ic-check-staking-off.png \
+  qt/rebelcoin/res/img/ic-nav-master-hover.png \
+  qt/rebelcoin/res/img/ic-watch-password.png \
+  qt/rebelcoin/res/img/bg-welcome.jpg \
+  qt/rebelcoin/res/img/bg-welcome.png \
+  qt/rebelcoin/res/img/bg-welcome@2x.jpg \
+  qt/rebelcoin/res/img/bg-welcome@3x.jpg \
+  qt/rebelcoin/res/img/ic-check-staking.png \
+  qt/rebelcoin/res/img/ic-nav-master.png \
+  qt/rebelcoin/res/img/btn-radio-active.png \
+  qt/rebelcoin/res/img/ic-check-sync-off.png \
+  qt/rebelcoin/res/img/ic-nav-privacy-active.png \
+  qt/rebelcoin/res/img/img-empty-contacts.png \
+  qt/rebelcoin/res/img/btn-radio-off.png \
+  qt/rebelcoin/res/img/ic-check-sync.png \
+  qt/rebelcoin/res/img/ic-nav-privacy-hover.png \
+  qt/rebelcoin/res/img/img-empty-dark-contacts.png \
+  qt/rebelcoin/res/img/ic-contact-arrow-down.png \
+  qt/rebelcoin/res/img/ic-contact-arrow-down-white.png \
+  qt/rebelcoin/res/img/ic-check-sync.png \
+  qt/rebelcoin/res/img/ic-check-faq.png \
+  qt/rebelcoin/res/img/ic-nav-privacy.png \
+  qt/rebelcoin/res/img/img-empty-dark-error.png \
+  qt/rebelcoin/res/img/ic-add-label.png \
+  qt/rebelcoin/res/img/ic-pending.png \
+  qt/rebelcoin/res/img/ic-check-theme-dark.png \
+  qt/rebelcoin/res/img/ic-nav-receive-active.png \
+  qt/rebelcoin/res/img/img-empty-dark-masternode.png \
+  qt/rebelcoin/res/img/ic-add-liliac.png \
+  qt/rebelcoin/res/img/ic-check-theme-light.png \
+  qt/rebelcoin/res/img/ic-nav-receive-hover.png \
+  qt/rebelcoin/res/img/img-empty-dark-multisend.png \
+  qt/rebelcoin/res/img/ic-add-purple.png \
+  qt/rebelcoin/res/img/ic-check-white.png \
+  qt/rebelcoin/res/img/ic-nav-receive.png \
+  qt/rebelcoin/res/img/img-empty-dark-peers.png \
+  qt/rebelcoin/res/img/ic-add.png \
+  qt/rebelcoin/res/img/ic-check.png \
+  qt/rebelcoin/res/img/ic-nav-send-active.png \
+  qt/rebelcoin/res/img/img-empty-dark-staking-off.png \
+  qt/rebelcoin/res/img/img-empty-dark-staking-on.png \
+  qt/rebelcoin/res/img/ic-address-book-grey.png \
+  qt/rebelcoin/res/img/ic-chevron-left.png \
+  qt/rebelcoin/res/img/ic-nav-send-hover.png \
+  qt/rebelcoin/res/img/img-empty-dark-transactions.png \
+  qt/rebelcoin/res/img/ic-address-book-white.png \
+  qt/rebelcoin/res/img/ic-chevron-right.png \
+  qt/rebelcoin/res/img/ic-chevron-right-liliac.png \
+  qt/rebelcoin/res/img/ic-nav-send.png \
+  qt/rebelcoin/res/img/img-empty-error.png \
+  qt/rebelcoin/res/img/ic-address-book.png \
+  qt/rebelcoin/res/img/ic-clear-liliac.png \
+  qt/rebelcoin/res/img/ic-nav-settings-active.png \
+  qt/rebelcoin/res/img/img-empty-masternode.png \
+  qt/rebelcoin/res/img/ic-address-send-white.png \
+  qt/rebelcoin/res/img/ic-clear-purple.png \
+  qt/rebelcoin/res/img/ic-nav-settings-hover.png \
+  qt/rebelcoin/res/img/img-empty-multisend.png \
+  qt/rebelcoin/res/img/ic-address-send.png \
+  qt/rebelcoin/res/img/ic-close-white.png \
+  qt/rebelcoin/res/img/ic-nav-settings.png \
+  qt/rebelcoin/res/img/img-empty-peers.png \
+  qt/rebelcoin/res/img/img-empty-privacy.png \
+  qt/rebelcoin/res/img/img-empty-privacy-dark.png \
+  qt/rebelcoin/res/img/ic-arrow-drop-down-white.png \
+  qt/rebelcoin/res/img/ic-close.png \
+  qt/rebelcoin/res/img/ic-radio-liliac-on.png \
+  qt/rebelcoin/res/img/img-empty-staking-off.png \
+  qt/rebelcoin/res/img/ic-arrow-drop-down.png \
+  qt/rebelcoin/res/img/ic-receive-off.png \
+  qt/rebelcoin/res/img/img-empty-staking-on.png \
+  qt/rebelcoin/res/img/ic-arrow-drop-up-white.png \
+  qt/rebelcoin/res/img/ic-receive-on.png \
+  qt/rebelcoin/res/img/img-empty-transactions.png \
+  qt/rebelcoin/res/img/ic-arrow-drop-up.png \
+  qt/rebelcoin/res/img/ic-received.png \
+  qt/rebelcoin/res/img/img-logo-rebelcoin.png \
+  qt/rebelcoin/res/img/ic-arrow-drop-white-down.png \
+  qt/rebelcoin/res/img/ic-combo-box.png \
+  qt/rebelcoin/res/img/ic-send.png \
+  qt/rebelcoin/res/img/img-logo-rebelcoin@2x.png \
+  qt/rebelcoin/res/img/ic-arrow-purple-down.png \
+  qt/rebelcoin/res/img/ic-connect.png \
+  qt/rebelcoin/res/img/ic-submenu-lock.png \
+  qt/rebelcoin/res/img/img-logo-rebelcoin@3x.png \
+  qt/rebelcoin/res/img/img-logo-rebelcoin.png \
+  qt/rebelcoin/res/img/ic-arrow-right-white.png \
+  qt/rebelcoin/res/img/ic-arrow-left-white.png \
+  qt/rebelcoin/res/img/ic-arrow-left.png \
+  qt/rebelcoin/res/img/ic-copy-liliac.png \
+  qt/rebelcoin/res/img/ic-submenu-staking.png \
+  qt/rebelcoin/res/img/img-nav-logo-rebelcoin.png \
+  qt/rebelcoin/res/img/ic-arrow-right.png \
+  qt/rebelcoin/res/img/ic-copy.png \
+  qt/rebelcoin/res/img/ic-copy-big.png \
+  qt/rebelcoin/res/img/ic-copy-big-white.png \
+  qt/rebelcoin/res/img/ic-submenu-unlock.png \
+  qt/rebelcoin/res/img/img-nav-logo.png \
+  qt/rebelcoin/res/img/ic-arrow-white-left.png \
+  qt/rebelcoin/res/img/ic-exit.png \
+  qt/rebelcoin/res/img/ic-switch-liliac-on.png \
+  qt/rebelcoin/res/img/img-nav-logo.png \
+  qt/rebelcoin/res/img/ic-arrow-white-right.png \
+  qt/rebelcoin/res/img/ic-expand.png \
+  qt/rebelcoin/res/img/ic-switch-off.png \
+  qt/rebelcoin/res/img/img-qr-test-big.png \
+  qt/rebelcoin/res/img/ic-check-active.png \
+  qt/rebelcoin/res/img/ic-folder.png \
+  qt/rebelcoin/res/img/ic-switch-on.png \
+  qt/rebelcoin/res/img/img-qr-test.png \
+  qt/rebelcoin/res/img/ic-check-box.png \
+  qt/rebelcoin/res/img/ic-check-box-dark-active.png \
+  qt/rebelcoin/res/img/ic-check-box-indeterminate.png \
+  qt/rebelcoin/res/img/ic-check-box-liliac-indeterminate.png \
+  qt/rebelcoin/res/img/ic-label-liliac.png \
+  qt/rebelcoin/res/img/ic-transaction-warning.png \
+  qt/rebelcoin/res/img/ic-transaction-mint.png \
+  qt/rebelcoin/res/img/ic-transaction-mint-inactive.png \
+  qt/rebelcoin/res/img/ic-check-cold-staking.png \
+  qt/rebelcoin/res/img/ic-check-cold-staking-off.png \
+  qt/rebelcoin/res/img/ic-check-cold-staking-enabled.png \
+  qt/rebelcoin/res/img/dark/ic-transaction-cs-contract.png \
+  qt/rebelcoin/res/img/dark/ic-transaction-cs-contract-inactive.png \
+  qt/rebelcoin/res/img/img-qr.png \
+  qt/rebelcoin/res/img/ic-check-connect-off.png \
+  qt/rebelcoin/res/img/ic-check-tor-off.png \
+  qt/rebelcoin/res/img/ic-check-tor.png \
+  qt/rebelcoin/res/img/ic-label.png \
+  qt/rebelcoin/res/img/ic-transaction-received.png \
+  qt/rebelcoin/res/img/dark/ic-transaction-received.png \
+  qt/rebelcoin/res/img/dark/ic-transaction-warning.png \
+  qt/rebelcoin/res/img/dark/ic-transaction-mint.png \
+  qt/rebelcoin/res/img/dark/ic-transaction-mint-inactive.png \
+  qt/rebelcoin/res/img/ic-transaction-received-inactive.png \
+  qt/rebelcoin/res/img/dark/ic-transaction-received-inactive.png \
+  qt/rebelcoin/res/img/img-welcome-step1.png \
+  qt/rebelcoin/res/img/ic-check-connect.png \
+  qt/rebelcoin/res/img/ic-menu-hover.png \
+  qt/rebelcoin/res/img/ic-transaction-sent.png \
+  qt/rebelcoin/res/img/ic-transaction-sent-inactive.png \
+  qt/rebelcoin/res/img/dark/ic-transaction-sent.png \
+  qt/rebelcoin/res/img/dark/ic-transaction-sent-inactive.png \
+  qt/rebelcoin/res/img/img-welcome-step2.png \
+  qt/rebelcoin/res/img/ic-check-dark.png \
+  qt/rebelcoin/res/img/ic-mint.png \
+  qt/rebelcoin/res/img/ic-transaction-staked.png \
+  qt/rebelcoin/res/img/ic-transaction-staked-inactive.png \
+  qt/rebelcoin/res/img/dark/ic-transaction-staked.png \
+  qt/rebelcoin/res/img/dark/ic-transaction-staked-inactive.png \
+  qt/rebelcoin/res/img/img-welcome-step3.png \
+  qt/rebelcoin/res/img/ic-check-liliac-on.png \
+  qt/rebelcoin/res/img/ic-nav-address-active.png \
+  qt/rebelcoin/res/img/ic-unlock-staking.png \
+  qt/rebelcoin/res/img/img-welcome-step4.png \
+  qt/rebelcoin/res/img/ic-check-locked-off.png \
+  qt/rebelcoin/res/img/ic-nav-address-hover.png \
+  qt/rebelcoin/res/img/ic-update-liliac.png \
+  qt/rebelcoin/res/img/ic-arrow-drop-down-purple.png \
+  qt/rebelcoin/res/img/ic-arrow-drop-up-purple.png \
+  qt/rebelcoin/res/img/ic-check-liliac-indeterminate.png \
+  qt/rebelcoin/res/img/ic-check-box-liliac-indeterminate.png \
+  qt/rebelcoin/res/img/ic-transaction-stake-delegated.png \
+  qt/rebelcoin/res/img/ic-transaction-stake-delegated-inactive.png \
+  qt/rebelcoin/res/img/ic-transaction-stake-hot.png \
+  qt/rebelcoin/res/img/ic-transaction-stake-hot-inactive.png \
+  qt/rebelcoin/res/img/dark/ic-transaction-stake-hot.png \
+  qt/rebelcoin/res/img/dark/ic-transaction-stake-hot-inactive.png \
+  qt/rebelcoin/res/img/dark/ic-transaction-stake-delegated.png \
+  qt/rebelcoin/res/img/dark/ic-transaction-stake-delegated-inactive.png \
+  qt/rebelcoin/res/img/ic-transaction-cs-contract.png \
+  qt/rebelcoin/res/img/ic-transaction-cs-contract-inactive.png \
+  qt/rebelcoin/res/img/ic-check-box-indeterminate.png \
+  qt/rebelcoin/res/img/ic-information.png \
+  qt/rebelcoin/res/img/ic-information-hover.png \
+  qt/rebelcoin/res/img/ani-loading-dark.gif \
+  qt/rebelcoin/res/img/ani-loading.gif \
+  qt/rebelcoin/res/img/ic-check-vote.png \
+  qt/rebelcoin/res/img/ic-check-vote-active.png \
+  qt/rebelcoin/res/img/ic-check-vote-dark.png \
+  qt/rebelcoin/res/img/ic-check-vote-active-dark.png \
+  qt/rebelcoin/res/img/ic-check-block.png \
+  qt/rebelcoin/res/img/ic-filter.png \
+  qt/rebelcoin/res/img/ic-link.png \
+  qt/rebelcoin/res/img/ic-nav-governance.png \
+  qt/rebelcoin/res/img/ic-nav-governance-active.png \
+  qt/rebelcoin/res/img/ic-nav-governance-hover.png \
+  qt/rebelcoin/res/img/ic-time.png \
+  qt/rebelcoin/res/img/ic-link-hover.png \
+  qt/rebelcoin/res/img/img-empty-governance.png \
+  qt/rebelcoin/res/img/img-empty-dark-governance.png
+
+BITCOIN_QT_BASE_CPP = \
+  qt/bantablemodel.cpp \
+  qt/bitcoinaddressvalidator.cpp \
+  qt/rebelcoin/rebelcoingui.cpp \
+  qt/bitcoinunits.cpp \
+  qt/clientmodel.cpp \
+  qt/csvmodelwriter.cpp \
+  qt/guiutil.cpp \
+  qt/intro.cpp \
+  qt/networkstyle.cpp \
+  qt/notificator.cpp \
+  qt/optionsdialog.cpp \
+  qt/optionsmodel.cpp \
+  qt/peertablemodel.cpp \
+  qt/platformstyle.cpp \
+  qt/qvalidatedlineedit.cpp \
+  qt/qvaluecombobox.cpp \
+  qt/rpcconsole.cpp \
+  qt/trafficgraphwidget.cpp \
+  qt/utilitydialog.cpp
+
+BITCOIN_QT_WINDOWS_CPP = qt/winshutdownmonitor.cpp
+
+BITCOIN_QT_WALLET_CPP = \
+  qt/addressbookpage.cpp \
+  qt/addresstablemodel.cpp \
+  qt/askpassphrasedialog.cpp \
+  qt/coincontroldialog.cpp \
+  qt/coincontroltreewidget.cpp \
+  qt/editaddressdialog.cpp \
+  qt/openuridialog.cpp \
+  qt/paymentrequestplus.cpp \
+  qt/paymentserver.cpp \
+  qt/recentrequeststablemodel.cpp \
+  qt/transactionfilterproxy.cpp \
+  qt/transactionrecord.cpp \
+  qt/transactiontablemodel.cpp \
+  qt/walletmodel.cpp \
+  qt/walletmodeltransaction.cpp \
+  qt/rebelcoin/loadingdialog.cpp \
+  qt/rebelcoin/pwidget.cpp \
+  qt/rebelcoin/focuseddialog.cpp \
+  qt/rebelcoin/guitransactionsutils.cpp \
+  qt/rebelcoin/snackbar.cpp \
+  qt/rebelcoin/navmenuwidget.cpp \
+  qt/rebelcoin/lockunlock.cpp \
+  qt/rebelcoin/receivedialog.cpp \
+  qt/rebelcoin/furabstractlistitemdelegate.cpp \
+  qt/rebelcoin/txviewholder.cpp \
+  qt/rebelcoin/qtutils.cpp \
+  qt/rebelcoin/expandablebutton.cpp \
+  qt/rebelcoin/balancebubble.cpp \
+  qt/rebelcoin/topbar.cpp \
+  qt/rebelcoin/txrow.cpp \
+  qt/rebelcoin/addressholder.cpp \
+  qt/rebelcoin/addressfilterproxymodel.cpp \
+  qt/rebelcoin/dashboardwidget.cpp \
+  qt/rebelcoin/addresslabelrow.cpp \
+  qt/rebelcoin/contactdropdownrow.cpp \
+  qt/rebelcoin/contactsdropdown.cpp \
+  qt/rebelcoin/optionbutton.cpp \
+  qt/rebelcoin/mninfodialog.cpp \
+  qt/rebelcoin/coldstakingmodel.cpp \
+  qt/rebelcoin/mnmodel.cpp \
+  qt/rebelcoin/masternodewizarddialog.cpp \
+  qt/rebelcoin/mnrow.cpp \
+  qt/rebelcoin/masternodeswidget.cpp \
+  qt/rebelcoin/myaddressrow.cpp \
+  qt/rebelcoin/csrow.cpp \
+  qt/rebelcoin/sendchangeaddressdialog.cpp \
+  qt/rebelcoin/sendconfirmdialog.cpp \
+  qt/rebelcoin/sendcustomfeedialog.cpp \
+  qt/rebelcoin/sendmemodialog.cpp \
+  qt/rebelcoin/sendmultirow.cpp \
+  qt/rebelcoin/send.cpp \
+  qt/rebelcoin/addnewaddressdialog.cpp \
+  qt/rebelcoin/addnewcontactdialog.cpp \
+  qt/rebelcoin/requestdialog.cpp \
+  qt/rebelcoin/receivewidget.cpp \
+  qt/rebelcoin/tooltipmenu.cpp \
+  qt/rebelcoin/addresseswidget.cpp \
+  qt/rebelcoin/defaultdialog.cpp \
+  qt/rebelcoin/coldstakingwidget.cpp \
+  qt/rebelcoin/governancemodel.cpp \
+  qt/rebelcoin/proposalcard.cpp \
+  qt/rebelcoin/mnselectiondialog.cpp \
+  qt/rebelcoin/votedialog.cpp \
+  qt/rebelcoin/createproposaldialog.cpp \
+  qt/rebelcoin/governancewidget.cpp \
+  qt/rebelcoin/settings/settingsbackupwallet.cpp \
+  qt/rebelcoin/settings/settingsexportcsv.cpp \
+  qt/rebelcoin/settings/settingsbittoolwidget.cpp \
+  qt/rebelcoin/settings/settingsconsolewidget.cpp \
+  qt/rebelcoin/settings/settingsdisplayoptionswidget.cpp \
+  qt/rebelcoin/settings/settingsfaqwidget.cpp \
+  qt/rebelcoin/settings/settingsinformationwidget.cpp \
+  qt/rebelcoin/settings/settingsmainoptionswidget.cpp \
+  qt/rebelcoin/settings/settingsmultisenddialog.cpp \
+  qt/rebelcoin/settings/settingsmultisendwidget.cpp \
+  qt/rebelcoin/settings/settingssignmessagewidgets.cpp \
+  qt/rebelcoin/settings/settingswalletoptionswidget.cpp \
+  qt/rebelcoin/settings/settingswalletrepairwidget.cpp \
+  qt/rebelcoin/settings/settingswidget.cpp \
+  qt/rebelcoin/welcomecontentwidget.cpp \
+  qt/rebelcoin/splash.cpp
+
+
+BITCOIN_QT_CPP = $(BITCOIN_QT_BASE_CPP)
+if TARGET_WINDOWS
+BITCOIN_QT_CPP += $(BITCOIN_QT_WINDOWS_CPP)
+endif
+if ENABLE_WALLET
+BITCOIN_QT_CPP += $(BITCOIN_QT_WALLET_CPP)
+endif
+
+RES_IMAGES = \
+  qt/res/images/about.png \
+  qt/res/images/splash.png \
+  qt/res/images/splash_testnet.png \
+  qt/res/images/splash_regtest.png
+
+RES_CSS = \
+  qt/res/css/default.css \
+  qt/rebelcoin/res/css/style_dark.css \
+  qt/rebelcoin/res/css/style_light.css
+
+BITCOIN_RC = qt/res/rebelcoin-qt-res.rc
+
+BITCOIN_QT_INCLUDES = -I$(builddir)/qt -I$(srcdir)/qt -I$(srcdir)/qt/forms \
+  -I$(builddir)/qt/forms -DQT_NO_KEYWORDS
+
+qt_libbitcoinqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
+  $(QT_INCLUDES) $(QT_DBUS_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS) $(SVG_CFLAGS) $(CHARTS_CFLAGS)
+qt_libbitcoinqt_a_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
+qt_libbitcoinqt_a_OBJCXXFLAGS = $(AM_OBJCXXFLAGS) $(QT_PIE_FLAGS)
+
+qt_libbitcoinqt_a_SOURCES = $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(QT_FORMS_UI) \
+  $(QT_QRC) $(QT_QRC_LOCALE) $(QT_TS) $(PROTOBUF_PROTO) $(RES_ICONS) $(RES_IMAGES) $(RES_CSS)
+
+nodist_qt_libbitcoinqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(PROTOBUF_CC) \
+  $(PROTOBUF_H) $(QT_QRC_CPP) $(QT_QRC_LOCALE_CPP)
+
+# forms/foo.h -> forms/ui_foo.h
+QT_FORMS_H=$(join $(dir $(QT_FORMS_UI)),$(addprefix ui_, $(notdir $(QT_FORMS_UI:.ui=.h))))
+
+# Most files will depend on the forms and moc files as includes. Generate them
+# before anything else.
+$(QT_MOC): $(QT_FORMS_H)
+$(qt_libbitcoinqt_a_OBJECTS) $(qt_rebelcoin_qt_OBJECTS) : | $(QT_MOC)
+
+#Generating these with a half-written protobuf header leads to wacky results.
+#This makes sure it's done.
+$(QT_MOC): $(PROTOBUF_H)
+$(QT_MOC_CPP): $(PROTOBUF_H)
+
+# rebelcoin-qt binary #
+qt_rebelcoin_qt_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
+  $(QT_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS) $(SVG_CFLAGS) $(CHARTS_CFLAGS)
+qt_rebelcoin_qt_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
+
+qt_rebelcoin_qt_SOURCES = qt/rebelcoin.cpp
+if TARGET_DARWIN
+  qt_rebelcoin_qt_SOURCES += $(BITCOIN_MM)
+endif
+if TARGET_WINDOWS
+  qt_rebelcoin_qt_SOURCES += $(BITCOIN_RC)
+endif
+qt_rebelcoin_qt_LDADD = qt/libbitcoinqt.a $(LIBBITCOIN_SERVER)
+if ENABLE_WALLET
+qt_rebelcoin_qt_LDADD += $(LIBBITCOIN_UTIL) $(LIBBITCOIN_WALLET)
+endif
+if ENABLE_ZMQ
+qt_rebelcoin_qt_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
+endif
+qt_rebelcoin_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBSAPLING) $(LIBRUSTZCASH) $(LIBZCASH_LIBS) $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) \
+  $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(SVG_LIBS) $(CHARTS_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1) \
+  $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
+qt_rebelcoin_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+qt_rebelcoin_qt_LIBTOOLFLAGS = $(AM_LIBTOOLFLAGS) --tag CXX
+
+#locale/foo.ts -> locale/foo.qm
+QT_QM=$(QT_TS:.ts=.qm)
+
+SECONDARY: $(QT_QM)
+
+$(srcdir)/qt/rebelcoinstrings.cpp: $(libbitcoin_server_a_SOURCES) $(libbitcoin_wallet_a_SOURCES) $(libbitcoin_common_a_SOURCES) $(libbitcoin_zmq_a_SOURCES) $(libbitcoin_util_a_SOURCES)
+	@test -n $(XGETTEXT) || echo "xgettext is required for updating translations"
+	$(AM_V_GEN) cd $(srcdir); XGETTEXT=$(XGETTEXT) PACKAGE_NAME="$(PACKAGE_NAME)" $(PYTHON) ../share/qt/extract_strings_qt.py $^
+
+translate: $(srcdir)/qt/rebelcoinstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_BASE_CPP) qt/rebelcoin.cpp $(BITCOIN_QT_WINDOWS_CPP) $(BITCOIN_QT_WALLET_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
+	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts $(srcdir)/qt/locale/rebelcoin_en.ts
+
+$(QT_QRC_LOCALE_CPP): $(QT_QRC_LOCALE) $(QT_QM)
+	@test -f $(RCC)
+	@cp -f $< $(@D)/temp_$(<F)
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name rebelcoin_locale $(@D)/temp_$(<F) | \
+	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
+	@rm $(@D)/temp_$(<F)
+
+$(QT_QRC_CPP): $(QT_QRC) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_CSS) $(PROTOBUF_H)
+	@test -f $(RCC)
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name rebelcoin $< | \
+	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
+
+CLEAN_QT = $(nodist_qt_libbitcoinqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno qt/rebelcoin/*.gcda qt/rebelcoin/*.gcno qt/rebelcoin/settings/*.gcda qt/rebelcoin/settings/*.gcno qt/temp_rebelcoin_locale.qrc
+
+CLEANFILES += $(CLEAN_QT)
+
+rebelcoin_qt_clean: FORCE
+	rm -f $(CLEAN_QT) $(qt_libbitcoinqt_a_OBJECTS) $(qt_rebelcoin_qt_OBJECTS) qt/rebelcoin-qt$(EXEEXT) $(LIBBITCOINQT)
+
+rebelcoin_qt : qt/rebelcoin-qt$(EXEEXT)
+
+ui_%.h: %.ui
+	@test -f $(UIC)
+	@$(MKDIR_P) $(@D)
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(UIC) -o $@ $< || (echo "Error creating $@"; false)
+
+%.moc: %.cpp
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(MOC) $(DEFAULT_INCLUDES) $(QT_INCLUDES) $(MOC_DEFS) $< | \
+	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
+
+moc_%.cpp: %.h
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(MOC) $(DEFAULT_INCLUDES) $(QT_INCLUDES) $(MOC_DEFS) $< | \
+	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
+
+%.qm: %.ts
+	@test -f $(LRELEASE)
+	@$(MKDIR_P) $(@D)
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LRELEASE) -silent $< -qm $@

@@ -1,0 +1,81 @@
+policy_module(rebelcoin, 1.100.1)
+
+########################################
+#
+# Declarations
+#
+
+type rebelcoin_t;
+type rebelcoin_exec_t;
+init_daemon_domain(rebelcoin_t, rebelcoin_exec_t)
+
+permissive rebelcoin_t;
+
+type rebelcoin_initrc_exec_t;
+init_script_file(rebelcoin_initrc_exec_t)
+
+type rebelcoin_conf_t;
+files_type(rebelcoin_conf_t)
+
+type rebelcoin_var_lib_t;
+files_type(rebelcoin_var_lib_t)
+
+type rebelcoin_var_run_t;
+files_type(rebelcoin_var_run_t)
+
+type rebelcoin_port_t;
+corenet_port(rebelcoin_port_t)
+
+########################################
+#
+# rebelcoin local policy
+#
+allow rebelcoin_t self:process { fork };
+
+allow rebelcoin_t self:fifo_file rw_fifo_file_perms;
+allow rebelcoin_t self:unix_stream_socket create_stream_socket_perms;
+
+manage_dirs_pattern(rebelcoin_t, rebelcoin_conf_t, rebelcoin_conf_t)
+manage_files_pattern(rebelcoin_t, rebelcoin_conf_t, rebelcoin_conf_t)
+
+manage_dirs_pattern(rebelcoin_t, rebelcoin_var_lib_t, rebelcoin_var_lib_t)
+manage_files_pattern(rebelcoin_t, rebelcoin_var_lib_t, rebelcoin_var_lib_t)
+files_var_lib_filetrans(rebelcoin_t, rebelcoin_var_lib_t, { dir file })
+
+manage_dirs_pattern(rebelcoin_t, rebelcoin_var_run_t, rebelcoin_var_run_t)
+manage_files_pattern(rebelcoin_t, rebelcoin_var_run_t, rebelcoin_var_run_t)
+
+sysnet_dns_name_resolve(rebelcoin_t)
+corenet_all_recvfrom_unlabeled(rebelcoin_t)
+
+allow rebelcoin_t self:tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_generic_if(rebelcoin_t)
+corenet_tcp_sendrecv_generic_node(rebelcoin_t)
+corenet_tcp_sendrecv_all_ports(rebelcoin_t)
+corenet_tcp_bind_generic_node(rebelcoin_t)
+
+gen_require(`
+    type rebelcoin_port_t;
+')
+allow rebelcoin_t rebelcoin_port_t:tcp_socket name_bind;
+
+gen_require(`
+    type rebelcoin_port_t;
+')
+allow rebelcoin_t rebelcoin_port_t:tcp_socket name_connect;
+
+domain_use_interactive_fds(rebelcoin_t)
+
+files_read_etc_files(rebelcoin_t)
+
+miscfiles_read_localization(rebelcoin_t)
+
+sysnet_dns_name_resolve(rebelcoin_t)
+
+allow rebelcoin_t rebelcoin_exec_t:file execute_no_trans;
+allow rebelcoin_t self:process setsched;
+corecmd_exec_ls(rebelcoin_t)
+corenet_tcp_connect_http_port(rebelcoin_t)
+dev_read_urand(rebelcoin_t)
+fs_getattr_xattr_fs(rebelcoin_t)
+kernel_read_system_state(rebelcoin_t)

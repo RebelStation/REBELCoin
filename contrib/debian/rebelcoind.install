@@ -1,0 +1,3 @@
+usr/local/bin/rebelcoind usr/bin
+usr/local/bin/rebelcoin-cli usr/bin
+debian/examples/rebelcoin.conf etc/rebelcoin

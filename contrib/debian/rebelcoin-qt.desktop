@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=REBEL Coin
+Comment=REBELCoin P2P Cryptocurrency
+Comment[fr]=REBELCoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=REBELCoin, eşten eşe kriptografik sanal para birimi
+Exec=rebelcoin-qt %u
+Terminal=false
+Type=Application
+Icon=rebelcoin128
+MimeType=x-scheme-handler/rebelcoin;
+Categories=Office;Finance;
+StartupWMClass=rebelcoin-qt
