@@ -1,17 +1,17 @@
 # Copyright (c) 2018-2019 The Ion developers
 # Copyright (c) 2019 The PIVX developers
+# Copyright (c) 2021 The REBEL Coin developers
 name: rebelcoin-core
 base: core18
-version: 5.2.0.1
-summary:   REBELCoin (Private – Instant – Verified – Transaction)
+version: 1.0.0
+summary:   REBELCoin
 description: |
-  REBELCoin is an MIT licensed,
-  open source, blockchain-based cryptocurrency with
+  REBELCoin is an, open source, blockchain-based cryptocurrency with
   ultra fast transactions, low fees, high network decentralization, and
   Zero Knowledge cryptography proofs for industry-leading
   transaction anonymity.
 
-  - [Download](https://rebelcoin.org/wp-content/uploads/2018/10/REBELCoin-White.pdf) REBELCoin White Paper PDF
+  - [Download](https://rebelstation.org/papers) REBELCoin White Paper
 grade: devel
 confinement: strict
 
@@ -106,7 +106,7 @@ parts:
       - fcitx-frontend-qt5
 
   rebelcoin-core:
-    source: https://github.com/REBELCoin-Project/REBELCoin
+    source: https://github.com/RebelStation/REBELCoin
     source-type: git
     source-tag: master
     plugin: nil

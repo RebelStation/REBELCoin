@@ -1849,9 +1849,9 @@ STAKING</translation>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/rebelcoin-project/rebelcoin-project-translations</source>
+https://www.transifex.com/RebelStation/REBELCoin-project-translations</source>
         <translation>Taal ontbreekt of vertaling onvolledig? Help om bij te dragen aan vertalingen:
-https://www.transifex.com/rebelcoin-project/rebelcoin-project-translations</translation>
+https://www.transifex.com/RebelStation/REBELCoin-project-translations</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -3786,8 +3786,8 @@ Er was een fout opgetreden tijdens het opslaan van deze adreslijst naar %1. Prob
         <translation>2) Waarom is mijn RBL niet besteedbaar?</translation>
     </message>
     <message>
-        <source>https://REBELCoin.org/</source>
-        <translation>https://REBELCoin.org/</translation>
+        <source>https://rebelstation.org /</source>
+        <translation>https://rebelstation.org /</translation>
     </message>
     <message>
         <source>1</source>

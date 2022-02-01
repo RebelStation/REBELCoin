@@ -33,7 +33,7 @@ packages:
 - "ca-certificates"
 - "python3"
 remotes:
-- "url": "https://github.com/rebelcoin-project/rebelcoin.git"
+- "url": "https://github.com/RebelStation/REBELCoin.git"
   "dir": "rebelcoin"
 files: []
 script: |

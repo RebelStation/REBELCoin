@@ -1832,9 +1832,9 @@ EN FRIO</translation>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/rebelcoin-project/rebelcoin-project-translations</source>
+https://www.transifex.com/RebelStation/REBELCoin-project-translations</source>
         <translation>¿Falta su lenguaje o la traducción está incompleta? Contribuya con las traducciones aquí:
-https://www.transifex.com/rebelcoin-project/rebelcoin-project-translations</translation>
+https://www.transifex.com/RebelStation/REBELCoin-project-translations</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -3753,8 +3753,8 @@ Ha habido un error al tratar de guardar la libreta de direcciones en %1. Por fav
         <translation>2) ¿Por qué mis RBL no se pueden gastar?</translation>
     </message>
     <message>
-        <source>https://REBELCoin.org/</source>
-        <translation>https://REBELCoin.org/</translation>
+        <source>https://rebelstation.org /</source>
+        <translation>https://rebelstation.org /</translation>
     </message>
     <message>
         <source>1</source>

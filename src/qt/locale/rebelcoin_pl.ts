@@ -1842,9 +1842,9 @@ STAKING</translation>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/rebelcoin-project/rebelcoin-project-translations</source>
+https://www.transifex.com/RebelStation/REBELCoin-project-translations</source>
         <translation>Brakuje języka bądź nieukończona pełnego tłumaczenia? Pomóż w tłumaczeniu tutaj:
-https://www.transifex.com/rebelcoin-project/rebelcoin-project-translations </translation>
+https://www.transifex.com/RebelStation/REBELCoin-project-translations </translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -3777,8 +3777,8 @@ Wystąpił błąd podczas próby zapisania listy adresów w %1. Proszę spróbuj
         <translation>2) Dlaczego mojego RBL nie można wydać?</translation>
     </message>
     <message>
-        <source>https://REBELCoin.org/</source>
-        <translation>https://REBELCoin.org/</translation>
+        <source>https://rebelstation.org /</source>
+        <translation>https://rebelstation.org /</translation>
     </message>
     <message>
         <source>1</source>

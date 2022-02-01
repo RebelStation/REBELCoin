@@ -1220,7 +1220,7 @@ BOOST_AUTO_TEST_CASE(ccoins_add)
      * entry in the cache after the modification. Verify behavior with the
      * with the ModifyNewCoin coinbase argument set to false, and to true.
      *
-     * REBELCoin: Remove Coinbase argument (ref: https://github.com/REBELCoin-Project/REBELCoin/pull/1775)
+     * REBELCoin: Remove Coinbase argument (ref: https://github.com/RebelStation/REBELCoin/pull/1775)
      *
      *           Cache   Write   Result  Cache        Result
      *           Value   Value   Value   Flags        Flags

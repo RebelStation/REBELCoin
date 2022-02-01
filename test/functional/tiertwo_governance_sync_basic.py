@@ -101,7 +101,7 @@ class MasternodeGovernanceBasicTest(rebelcoinTier2TestFramework):
         # Prepare the proposal
         self.log.info("preparing budget proposal..")
         firstProposalName = "super-cool"
-        firstProposalLink = "https://forum.rebelcoin.org/t/test-proposal"
+        firstProposalLink = "https://forum.rebelstation.org /t/test-proposal"
         firstProposalCycles = 2
         firstProposalAddress = self.miner.getnewaddress()
         firstProposalAmountPerCycle = 300

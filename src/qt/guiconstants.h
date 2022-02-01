@@ -51,7 +51,7 @@ static const int MAX_URI_LENGTH = 255;
 
 
 #define QAPP_ORG_NAME "REBELCoin"
-#define QAPP_ORG_DOMAIN "rebelcoin.org"
+#define QAPP_ORG_DOMAIN "rebelstation.org "
 #define QAPP_APP_NAME_DEFAULT "REBELCoin-Qt"
 #define QAPP_APP_NAME_TESTNET "REBELCoin-Qt-testnet"
 

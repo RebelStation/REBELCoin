@@ -28,9 +28,9 @@ Build-Depends: debhelper,
  libzmq3-dev,
  dh-systemd
 Standards-Version: 3.9.2
-Homepage: http://www.rebelcoin.org
-Vcs-Git: git://github.com/REBELCoin-Project/REBELCoin.git
-Vcs-Browser: http://github.com/REBELCoin-Project/REBELCoin
+Homepage: http://www.rebelstation.org 
+Vcs-Git: git://github.com/RebelStation/REBELCoin.git
+Vcs-Browser: http://github.com/RebelStation/REBELCoin
 
 Package: rebelcoind
 Architecture: any

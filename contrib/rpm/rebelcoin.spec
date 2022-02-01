@@ -20,22 +20,22 @@ Summary:	Peer to Peer Cryptographic Currency
 
 Group:		Applications/System
 License:	MIT
-URL:		https://rebelcoin.org/
-Source0:	https://rebelcoin.org/bin/rebelcoin-core-%{version}/rebelcoin-%{version}.tar.gz
+URL:		https://rebelstation.org /
+Source0:	https://rebelstation.org /bin/rebelcoin-core-%{version}/rebelcoin-%{version}.tar.gz
 Source1:	http://download.oracle.com/berkeley-db/db-%{bdbv}.NC.tar.gz
 
-Source10:	https://raw.githubusercontent.com/rebelcoin-project/rebelcoin/v%{version}/contrib/debian/examples/rebelcoin.conf
+Source10:	https://raw.githubusercontent.com/RebelStation/REBELCoin/v%{version}/contrib/debian/examples/rebelcoin.conf
 
 #man pages
-Source20:	https://raw.githubusercontent.com/rebelcoin-project/rebelcoin/v%{version}/doc/man/rebelcoind.1
-Source21:	https://raw.githubusercontent.com/rebelcoin-project/rebelcoin/v%{version}/doc/man/rebelcoin-cli.1
-Source22:	https://raw.githubusercontent.com/rebelcoin-project/rebelcoin/v%{version}/doc/man/rebelcoin-qt.1
+Source20:	https://raw.githubusercontent.com/RebelStation/REBELCoin/v%{version}/doc/man/rebelcoind.1
+Source21:	https://raw.githubusercontent.com/RebelStation/REBELCoin/v%{version}/doc/man/rebelcoin-cli.1
+Source22:	https://raw.githubusercontent.com/RebelStation/REBELCoin/v%{version}/doc/man/rebelcoin-qt.1
 
 #selinux
-Source30:	https://raw.githubusercontent.com/rebelcoin-project/rebelcoin/v%{version}/contrib/rpm/rebelcoin.te
+Source30:	https://raw.githubusercontent.com/RebelStation/REBELCoin/v%{version}/contrib/rpm/rebelcoin.te
 # Source31 - what about rebelcoin-tx and bench_rebelcoin ???
-Source31:	https://raw.githubusercontent.com/rebelcoin-project/rebelcoin/v%{version}/contrib/rpm/rebelcoin.fc
-Source32:	https://raw.githubusercontent.com/rebelcoin-project/rebelcoin/v%{version}/contrib/rpm/rebelcoin.if
+Source31:	https://raw.githubusercontent.com/RebelStation/REBELCoin/v%{version}/contrib/rpm/rebelcoin.fc
+Source32:	https://raw.githubusercontent.com/RebelStation/REBELCoin/v%{version}/contrib/rpm/rebelcoin.if
 
 Source100:	https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg
 

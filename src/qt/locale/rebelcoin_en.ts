@@ -2269,7 +2269,7 @@ STAKING</source>
     <message>
         <location line="+21"/>
         <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/rebelcoin-project/rebelcoin-project-translations</source>
+https://www.transifex.com/RebelStation/REBELCoin-project-translations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4889,7 +4889,7 @@ There was an error trying to save the address list to %1. Please try again.</sou
     </message>
     <message>
         <location line="+148"/>
-        <source>https://REBELCoin.org/</source>
+        <source>https://rebelstation.org /</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

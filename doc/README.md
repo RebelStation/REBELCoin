@@ -3,7 +3,7 @@ REBEL Coin
 
 Setup
 ---------------------
-[REBEL Coin](http://rebelcoin.org/wallet) is the original REBELCoin client and it builds the backbone of the network. However, it downloads and stores the entire history of REBELCoin transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
+[REBEL Coin](https://github.com/RebelStation/REBELCoin/releases/tag/v1.0) is the original REBELCoin client and it builds the backbone of the network. However, it downloads and stores the entire history of REBELCoin transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
 
 Running
 ---------------------
@@ -16,7 +16,7 @@ Unpack the files into a directory and run:
 - `bin/rebelcoin-qt` (GUI) or
 - `bin/rebelcoind` (headless)
 
-If this is the first time running REBEL Coin (since v5.0.0), you'll need to install the sapling params by running the included `install-params.sh` script, which copies the two params files to `$HOME/.rebelcoin-params`
+If this is the first time running REBEL Coin, you'll need to install the sapling params by running the included `install-params.sh` script, which copies the two params files to `$HOME/.rebelcoin-params`
 
 ### Windows
 
@@ -28,10 +28,10 @@ Drag REBELCoin-Qt to your applications folder, and then run REBELCoin-Qt.
 
 ### Need Help?
 
-* See the documentation at the [REBELCoin Wiki](https://github.com/REBELCoin-Project/REBELCoin/wiki)
+* See the documentation at the [REBELCoin Wiki](https://github.com/RebelStation/REBELCoin/wiki)
 for help and more information.
-* Ask for help on [BitcoinTalk](https://bitcointalk.org/index.php?topic=1262920.0) or on the [REBELCoin Forum](http://forum.rebelcoin.org/).
-* Join our Discord server [Discord Server](https://discord.rebelcoin.org)
+* Ask for help on the [REBELCoin Forum](https://forum.rebelstation.org /).
+* Join our Discord server [Discord Server](https://discord.gg/8XJwU2r3Un )
 
 Building
 ---------------------
@@ -48,18 +48,15 @@ Development
 The REBELCoin repo's [root README](/README.md) contains relevant information on the development process and automated testing.
 
 - [Developer Notes](developer-notes.md)
-- [Multiwallet Qt Development](multiwallet-qt.md)
 - [Release Notes](release-notes.md)
 - [Release Process](release-process.md)
-- [Source Code Documentation (External Link)](https://www.fuzzbawls.pw/rebelcoin/doxygen/)
 - [Translation Process](translation_process.md)
-- [Unit Tests](unit-tests.md)
 - [Unauthenticated REST Interface](REST-interface.md)
 - [Dnsseed Policy](dnsseed-policy.md)
 
 ### Resources
-* Discuss on the [BitcoinTalk](https://bitcointalk.org/index.php?topic=1262920.0) or the [REBELCoin](http://forum.rebelcoin.org/) forum.
-* Join the [REBELCoin Discord](https://discord.rebelcoin.org).
+* Discuss on the [REBELCoin](https://forum.rebelstation.org /) forum.
+* Join the [REBELCoin Discord](https://discord.gg/8XJwU2r3Un ).
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)

@@ -29,7 +29,7 @@ packages:
 - "python3-setuptools"
 - "fonts-tuffy"
 remotes:
-- "url": "https://github.com/rebelcoin-project/rebelcoin.git"
+- "url": "https://github.com/RebelStation/REBELCoin.git"
   "dir": "rebelcoin"
 files:
 - "MacOSX10.11.sdk.tar.gz"
