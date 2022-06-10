@@ -10,7 +10,7 @@ REBEL Coin
 <tr><td>Coin Type</td><td>Pure MN POS</td></tr>
 <tr><td>Block Time</td><td>120 Sec</td></tr>
 <tr><td>Block Distribution</td><td>50% MN + 40% Stake + 10% Developer</td></tr>
-<tr><td>Maximum Supply</td><td>21,000,000 RBL</td></tr>
+<tr><td>Total Supply</td><td>21,000,000 RBL</td></tr>
 <tr><td>Minimum Stake Depth</td><td>60 Blocks</td></tr>
 <tr><td>Coin Maturity</td><td>60 Block</td></tr>
 <tr><td>Masternode Collateral</td><td>1,000 RBL</td></tr>
